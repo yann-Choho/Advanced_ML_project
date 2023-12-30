@@ -13,7 +13,7 @@
 * Nicolas DRETTAKIS
 
 
-### Teacher (responsible for the seminar): 
+### Teacher: 
 
 * Austin STROMME
 
