@@ -30,4 +30,9 @@ Deep neural networks such as CNN's are sensitive to adversarial attacks, that is
 
 By running the notebook attack_defences.ipynb you will obtain every accuracy result we found. It starts by running the notebook Chinese_MNIST_preprocessing.ipynb which preprocesses the data from the dataset we chose, and then you have the training of the model before every attack then defense methods. At the end of each method there are performance tests and visualisation of the perturbation on the images. You can also find several other notebooks containing some methods alone. 
 
-Each cell of the notebook has comment to esly understand what what we mean, and when we use code from others authors we reported it in the markdown before the code, else , it is totaly from us.
+- Each cell of the notebook has comment to esly understand what what we mean, and when we use code from others authors we reported it in the markdown before the code, else , it is totaly from us.
+
+- the results folder contained our plot (png) that we made and also the best parameters of the models we trained so that you don't need to retrain the model, thing which can took a long time
+
+- the utils folder containes files we used before the merging in only one notebook, some difference can be seen in for instance coded in tensorflow by a member of the group and put onto a pytorch by another in the final notebook for compatibility
+ 
