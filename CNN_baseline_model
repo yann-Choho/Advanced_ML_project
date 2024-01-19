@@ -1,0 +1,48 @@
+# CNN Model Definition
+
+# Utilizing PyTorch's built-in functions, we define a CNN model to leverage computational 
+# efficiencies such as GPU and TPU acceleration. This approach is chosen over a more 
+# manual implementation using NumPy, which, despite optimization libraries like Numba, 
+# would result in longer computation times.
+
+# -----------------------------------------------------------------------------------------
+# Section 1.1: CNN Model Class Definition
+#
+# This section outlines the structure of the CNN model class, which inherits from PyTorch's
+# nn.Module. The class is initialized with the number of classes to predict and comprises
+# a series of convolutional and pooling layers followed by fully connected layers for 
+# classification.
+# -----------------------------------------------------------------------------------------
+
+class CNNModel(nn.Module):
+    def __init__(self, num_classes=15):
+        super(CNNModel, self).__init__()
+
+        # Define the convolutional layers
+        self.features = nn.Sequential(
+            nn.Conv2d(1, 16, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2),
+            nn.Conv2d(16, 32, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(kernel_size=2, stride=2)
+        )
+
+        # Calculate the input size of the first linear layer based on the output of the convolutional layers
+        self.fc1_input_size = 32 * 16 * 16  # 32 channels, 16x16 size after max-pooling
+
+        # Define the fully connected layers
+        self.classifier = nn.Sequential(
+            nn.Linear(self.fc1_input_size, 128),
+            nn.ReLU(),
+            nn.Linear(128, num_classes)
+        )
+
+    def forward(self, x):
+        # Forward pass through the convolutional layers
+        x = self.features(x)
+        # Flatten the output for the fully connected layers
+        x = x.reshape(x.size(0), -1) 
+        # Forward pass through the classifier to get predictions
+        x = self.classifier(x)
+        return x
