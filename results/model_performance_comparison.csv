@@ -1,0 +1,9 @@
+Dataset,Model,Accuracy
+Normal,Adversarial Training 1,0.9340000152587891
+Normal,Adversarial Training 2,0.9676666855812073
+FGSM,Adversarial Training 1,0.7213333249092102
+FGSM,Adversarial Training 2,0.6466666460037231
+PGD,Adversarial Training 1,0.7143333554267883
+PGD,Adversarial Training 2,0.6296666860580444
+CW,Adversarial Training 1,0.07400000095367432
+CW,Adversarial Training 2,0.18666666746139526
